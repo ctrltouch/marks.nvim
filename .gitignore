@@ -1,0 +1,19 @@
+# Ignore generated documentation files
+doc/tags
+
+# Ignore temporary files
+*.swp
+*.swo
+*.tmp
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# Ignore local environment files
+.env
+*.log
+
+# Ignore OS-specific files
+.DS_Store
+Thumbs.db
