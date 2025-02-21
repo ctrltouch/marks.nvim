@@ -191,18 +191,18 @@ local function setup_mappings(config)
 	apply_mappings()
 end
 
-local function setup_autocommands()
-	vim.cmd([[augroup Marks_autocmds
+local function setup_autocommands(config)
+  vim.cmd([[augroup Marks_autocmds
     autocmd!
     autocmd BufEnter * lua require'marks'.refresh(true)
     autocmd BufDelete * lua require'marks'._on_delete()
   ]])
 
-	if config.refresh_on_save then
-		vim.cmd([[autocmd BufWritePost * lua require'marks'.refresh(true)]])
-	end
+  if config.refresh_on_save then
+    vim.cmd([[autocmd BufWritePost * lua require'marks'.refresh(true)]])
+  end
 
-	vim.cmd([[augroup end]])
+  vim.cmd([[augroup end]])
 end
 
 function M.setup(config)
@@ -246,7 +246,7 @@ function M.setup(config)
 
 	config.default_mappings = utils.option_nil(config.default_mappings, true)
 	setup_mappings(config)
-	setup_autocommands()
+	setup_autocommands(config)
 
 	M.mark_state.opt.signs = utils.option_nil(config.signs, true)
 	M.mark_state.opt.buf_signs = {}
